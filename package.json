@@ -1,0 +1,25 @@
+{
+  "name": "antika",
+  "version": "1.0.0",
+  "description": "a",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oriionn/antika.git"
+  },
+  "keywords": [
+    "sendvid",
+    "sibnet",
+    "player",
+    "video"
+  ],
+  "author": "oriionn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oriionn/antika/issues"
+  },
+  "homepage": "https://github.com/oriionn/antika#readme"
+}
