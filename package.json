@@ -25,5 +25,9 @@
   "homepage": "https://github.com/oriionn/antika#readme",
   "devDependencies": {
     "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
   }
 }
