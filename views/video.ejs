@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -5,10 +6,20 @@
         <title>Video Player</title>
 
         <link rel="stylesheet" href="/public/style.css" />
+        <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+        <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
     </head>
     <body>
-        <video controls>
-            <source src="<%= video %>" type="video/mp4" />
-        </video>
+        <video-js data-setup='{
+            "controls": true,
+            "autoplay": false,
+            "preload": "auto",
+            "fill": true
+        }' id="video">
+          <source src="<%= video %>" type="video/mp4">
+        </video-js>
+
+        <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+        <script src="/public/app.js"></script>
     </body>
 </html>
