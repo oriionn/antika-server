@@ -9,17 +9,18 @@
         <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
         <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
     </head>
-    <body>
+    <body data-original-link="<%= originalLink %>">
         <video-js data-setup='{
             "controls": true,
             "autoplay": false,
             "preload": "auto",
             "fill": true
         }' id="video">
-          <source src="<%= video %>" type="video/mp4">
+          <source src="<%= video %>" type="<%= type %>">
         </video-js>
 
         <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+        <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
         <script src="/public/app.js"></script>
     </body>
 </html>
