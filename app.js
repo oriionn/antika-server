@@ -1,37 +1,39 @@
 const express = require("express");
 require("dotenv").config();
 const app = express();
-let disabled_sources = [];
-const sources = {
-  sibnet: require("./sources/sibnet"),
-  sendvid: require("./sources/sendvid"),
-};
-
-if (process.env.DISABLED_SOURCES) {
-  disabled_sources = process.env.DISABLED_SOURCES.split(",");
-}
 
 app.set("view engine", "ejs");
 app.use("/public", express.static("public"));
 
 app.get("/", async (req, res) => {
-  let source = req.query.source;
-  let id = req.query.id;
-  if (disabled_sources.includes(source)) return res.send(`Disabled source`);
-  if (!source || !id) return res.send(`Invalid request`);
-  if (!sources[source]) return res.send(`Invalid source`);
+  let video = req.query.video;
+  let redirect = req.query.redirect;
+  let originalLink = req.query.original_link;
+  if (!video) return res.send(`Invalid request`);
+  if (!originalLink) return res.send(`Invalid request`);
 
-  let video = await sources[source](id);
-  if (!video.success) return res.send(video.message);
+  let videoLink = decodeURIComponent(
+    Buffer.from(decodeURIComponent(video), "base64").toString("utf8"),
+  );
+
+  originalLink = decodeURIComponent(
+    Buffer.from(decodeURIComponent(originalLink), "base64").toString("utf8"),
+  );
+
+  if (redirect && redirect === "true") {
+    let r = await fetch(videoLink, {
+      headers: {
+        Referer: originalLink,
+      },
+      redirect: "follow",
+    });
+
+    videoLink = r.url;
+  }
 
   res.render("video", {
-    video: video.message,
-    source,
+    video: videoLink,
   });
-});
-
-app.get("/disabledSources", (req, res) => {
-  res.json(disabled_sources);
 });
 
 app.listen(3000, () => {
