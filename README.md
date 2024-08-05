@@ -1,5 +1,6 @@
 # Antika server
 Antika server is a simple server that can be used to watch video from a URL and another specific parameter. This server was created to be used with the Antika extension.
+The extension can be found [here](https://github.com/oriionn/antika-extension).
 
 ## Installation
 To install the server, you need to have [Node.js](https://nodejs.org/en/) installed on your computer. After that, you can clone the repository and install the dependencies using the following commands:
