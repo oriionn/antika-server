@@ -44,7 +44,6 @@ app.use("/proxy", (req, res, next) => {
         }
       },
     },
-    logger: console,
   })(req, res, next);
 });
 
